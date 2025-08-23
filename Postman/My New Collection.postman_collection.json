@@ -14,40 +14,180 @@
 				{
 					"name": "signin Empty email",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"remember\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{myURL}}/auth/signin",
+							"host": [
+								"{{myURL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Empty Body",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{myURL}}/auth/signin",
+							"host": [
+								"{{myURL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Wrong key",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email.com\": \"test@test.com\",\n  \"password\": \"Qwerty12345\",\n  \"remember\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{myURL}}/auth/signin",
+							"host": [
+								"{{myURL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Too long value",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"testееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееееее@test.com\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"remember\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{myURL}}/auth/signin",
+							"host": [
+								"{{myURL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "No valid password",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"Qwerty123456\",\n  \"remember\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{myURL}}/auth/signin",
+							"host": [
+								"{{myURL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
 					},
 					"response": []
 				}
@@ -140,15 +280,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://qauto2.forstudy.space/api/auth/signin",
-					"protocol": "https",
+					"raw": "{{myURL}}/auth/signin",
 					"host": [
-						"qauto2",
-						"forstudy",
-						"space"
+						"{{myURL}}"
 					],
 					"path": [
-						"api",
 						"auth",
 						"signin"
 					]
@@ -168,15 +304,11 @@
 					}
 				],
 				"url": {
-					"raw": "https://qauto2.forstudy.space/api/auth/logout",
-					"protocol": "https",
+					"raw": "{{myURL}}/auth/logout",
 					"host": [
-						"qauto2",
-						"forstudy",
-						"space"
+						"{{myURL}}"
 					],
 					"path": [
-						"api",
 						"auth",
 						"logout"
 					]
@@ -209,15 +341,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://qauto2.forstudy.space/api/auth/signin",
-					"protocol": "https",
+					"raw": "{{myURL}}/auth/signin",
 					"host": [
-						"qauto2",
-						"forstudy",
-						"space"
+						"{{myURL}}"
 					],
 					"path": [
-						"api",
 						"auth",
 						"signin"
 					]
@@ -250,109 +378,18 @@
 					}
 				},
 				"url": {
-					"raw": "https://qauto2.forstudy.space/api/users/profile",
-					"protocol": "https",
+					"raw": "{{myURL}}/users/profile",
 					"host": [
-						"qauto2",
-						"forstudy",
-						"space"
+						"{{myURL}}"
 					],
 					"path": [
-						"api",
 						"users",
 						"profile"
 					]
 				},
 				"description": "Generated from cURL: curl -X 'PUT' \\\r\n  'https://qauto2.forstudy.space/api/users/profile' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"photo\": \"user-1621352948859.jpg\",\r\n  \"name\": \"John\",\r\n  \"lastName\": \"Dou\",\r\n  \"dateBirth\": \"2021-03-17T15:21:05.000Z\",\r\n  \"country\": \"Ukraine\"\r\n}'"
 			},
-			"response": [
-				{
-					"name": "Edit profile",
-					"originalRequest": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"photo\": \"user-1621352948859.jpg\",\r\n  \"name\": \"Davon\",\r\n  \"lastName\": \"Vandervort\",\r\n  \"dateBirth\": \"2021-03-17T15:21:05.000Z\",\r\n  \"country\": \"Ukraine\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://qauto2.forstudy.space/api/users/profile",
-							"protocol": "https",
-							"host": [
-								"qauto2",
-								"forstudy",
-								"space"
-							],
-							"path": [
-								"api",
-								"users",
-								"profile"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": null,
-					"header": [
-						{
-							"key": "Server",
-							"value": "nginx"
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 23 Aug 2025 13:02:54 GMT"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Vary",
-							"value": "Origin"
-						},
-						{
-							"key": "Access-Control-Allow-Credentials",
-							"value": "true"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"aa-6heBA4/EhAaXEex/e2ejR1vkL3g\""
-						},
-						{
-							"key": "Content-Encoding",
-							"value": "gzip"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"userId\": 118332,\n        \"photoFilename\": \"default-user.png\",\n        \"name\": \"Destin\",\n        \"lastName\": \"Wisoky\",\n        \"dateBirth\": \"2021-03-17T15:21:05.000Z\",\n        \"country\": \"Ukraine\"\n    }\n}"
-				}
-			]
+			"response": []
 		},
 		{
 			"name": "Reset password",
@@ -390,15 +427,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://qauto2.forstudy.space/api/users/password",
-					"protocol": "https",
+					"raw": "{{myURL}}/users/password",
 					"host": [
-						"qauto2",
-						"forstudy",
-						"space"
+						"{{myURL}}"
 					],
 					"path": [
-						"api",
 						"users",
 						"password"
 					]
@@ -409,6 +442,30 @@
 		},
 		{
 			"name": "Create car",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let milage = pm.variables.replaceIn(\"{{$randomInt}}\") \r",
+							"pm.collectionVariables.set('milage', milage);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"car_id\", jsonData.data.id)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -423,7 +480,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 122\r\n}",
+					"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": {{milage}}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -431,15 +488,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://qauto2.forstudy.space/api/cars",
-					"protocol": "https",
+					"raw": "{{myURL}}/cars",
 					"host": [
-						"qauto2",
-						"forstudy",
-						"space"
+						"{{myURL}}"
 					],
 					"path": [
-						"api",
 						"cars"
 					]
 				},
@@ -471,15 +524,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://qauto2.forstudy.space/api/cars/189844",
-					"protocol": "https",
+					"raw": "{{myURL}}/cars/189844",
 					"host": [
-						"qauto2",
-						"forstudy",
-						"space"
+						"{{myURL}}"
 					],
 					"path": [
-						"api",
 						"cars",
 						"189844"
 					]
@@ -499,15 +548,11 @@
 					}
 				],
 				"url": {
-					"raw": "https://qauto2.forstudy.space/api/users",
-					"protocol": "https",
+					"raw": "{{myURL}}/users",
 					"host": [
-						"qauto2",
-						"forstudy",
-						"space"
+						"{{myURL}}"
 					],
 					"path": [
-						"api",
 						"users"
 					]
 				},
@@ -561,11 +606,11 @@
 		},
 		{
 			"key": "milage",
-			"value": ""
+			"value": "175"
 		},
 		{
 			"key": "car_id",
-			"value": ""
+			"value": 189844
 		}
 	]
 }
