@@ -256,6 +256,16 @@
 						"type": "text/javascript",
 						"packages": {}
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
 				}
 			],
 			"request": {
@@ -459,7 +469,9 @@
 					"script": {
 						"exec": [
 							"var jsonData = pm.response.json();\r",
-							"pm.collectionVariables.set(\"car_id\", jsonData.data.id)"
+							"pm.collectionVariables.set(\"car_id\", jsonData.data.id);\r",
+							"pm.collectionVariables.set(\"carMileage\", jsonData.data.mileage);\r",
+							"console.log(\"Created car id:\", jsonData.data.id);"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -501,6 +513,46 @@
 			"response": []
 		},
 		{
+			"name": "Add expenses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carId\": 1,\r\n  \"reportedAt\": \"2021-05-17\",\r\n  \"mileage\": 111,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qauto2.forstudy.space/api/expenses",
+					"protocol": "https",
+					"host": [
+						"qauto2",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"expenses"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://qauto2.forstudy.space/api/expenses' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"carId\": 1,\r\n  \"reportedAt\": \"2021-05-17\",\r\n  \"mileage\": 111,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}'"
+			},
+			"response": []
+		},
+		{
 			"name": "Edit Car",
 			"request": {
 				"method": "PUT",
@@ -516,7 +568,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 175\r\n}",
+					"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 168223\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -524,21 +576,53 @@
 					}
 				},
 				"url": {
-					"raw": "{{myURL}}/cars/189844",
+					"raw": "https://qauto2.forstudy.space/api/cars/189913",
+					"protocol": "https",
 					"host": [
-						"{{myURL}}"
+						"qauto2",
+						"forstudy",
+						"space"
 					],
 					"path": [
+						"api",
 						"cars",
-						"189844"
+						"189913"
 					]
 				},
-				"description": "Generated from cURL: curl -X 'PUT' \\\r\n  'https://qauto2.forstudy.space/api/cars/189844' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 175\r\n}'"
+				"description": "Generated from cURL: curl -X 'PUT' \\\r\n  'https://qauto2.forstudy.space/api/cars/189913' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 168223\r\n}'"
 			},
 			"response": []
 		},
 		{
-			"name": "Delete profiles",
+			"name": "Show Car Expenses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://qauto2.forstudy.space/api/expenses/189916",
+					"protocol": "https",
+					"host": [
+						"qauto2",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"expenses",
+						"189916"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://qauto2.forstudy.space/api/expenses/189913' \\\r\n  -H 'accept: application/json'"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete profile",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -611,6 +695,18 @@
 		{
 			"key": "car_id",
 			"value": 189844
+		},
+		{
+			"key": "carMileage",
+			"value": ""
+		},
+		{
+			"key": "newMilage",
+			"value": ""
+		},
+		{
+			"key": "expense_id",
+			"value": ""
 		}
 	]
 }
