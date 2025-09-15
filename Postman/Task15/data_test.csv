@@ -1,3 +1,3 @@
-base_url,name,lastName,email,password,dateBirth,milage
-https://qauto2.forstudy.space/api,Tema, Petrov,qwerertt@gmail.com,qwerty123,1990-12-31T00:00:00Z,123
-https://qauto.forstudy.space/api,Basya,Koteykin,Basyakot@gmail.com,arestokrat1,1990-12-31T00:00:00Z,456
+base_url,email,password
+https://qauto2.forstudy.space/api,qwerertt@gmail.com,qwerty123
+https://qauto.forstudy.space/api,Basyakot@gmail.com,arestokrat1

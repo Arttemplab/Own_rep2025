@@ -1,157 +1,13 @@
 {
 	"info": {
-		"_postman_id": "8ed27c64-f42a-40fa-a9fe-259866632fa9",
+		"_postman_id": "f397e9b3-7060-4254-9b61-8332a55e165f",
 		"name": "My New Collection Tests Qa auto Copy",
 		"description": "Api docs for hillel-qauto project",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "47382279",
-		"_collection_link": "https://artempkh-8422498.postman.co/workspace/d08cfc33-e4af-4ce7-86fa-5f34d418b831/collection/47382279-8ed27c64-f42a-40fa-a9fe-259866632fa9?action=share&source=collection_link&creator=47382279"
+		"_collection_link": "https://artempkh-8422498.postman.co/workspace/Artem-Team's-Workspace~d08cfc33-e4af-4ce7-86fa-5f34d418b831/collection/47382279-f397e9b3-7060-4254-9b61-8332a55e165f?action=share&source=collection_link&creator=47382279"
 	},
 	"item": [
-		{
-			"name": "signup",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"let mail = pm.variables.replaceIn(\"{{$randomEmail}}\");\r",
-							"pm.collectionVariables.set(\"random_mail\", mail);\r",
-							"pm.collectionVariables.set(\"password\", \"Qwerty12345\")"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"if(pm.response.code !== 200) console.log(pm.response.status);\r",
-							" \r",
-							" if (pm.response.text().includes('status: \"ok\"')) {\r",
-							"    JSON.parse(pm.response.text())\r",
-							"}\r",
-							"else {\r",
-							"    console.log(\"Tests stopped\");\r",
-							"    pm.execution.setNextRequest(null);\r",
-							"}\r",
-							"\r",
-							"if(pm.response.code === 201) {\r",
-							"\r",
-							"pm.test(\"Status code is 201\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"    });\r",
-							"\r",
-							"var jsonData = pm.response.json();\r",
-							"pm.test(\"Your test name\", function () {\r",
-							"        pm.expect(jsonData.data.distanceUnits).to.eql(\"km\");\r",
-							"    });\r",
-							"\r",
-							"var jsonData = pm.response.json();\r",
-							"pm.test(\"Your test name\", function () {\r",
-							"       pm.expect(typeof jsonData.data.userId).to.eql(\"number\");\r",
-							"    });\r",
-							"}\r",
-							"else{\r",
-							"    console.log(\"Test failed: \", pm.response.code);\r",
-							"    throw new Error(\"Test failed\")\r",
-							"}\r",
-							"\r",
-							"\r",
-							"var schema = {\r",
-							"    \"type\": \"object\",\r",
-							"  \"properties\": {\r",
-							"    \"status\": {\r",
-							"      \"type\": \"string\"\r",
-							"    },\r",
-							"    \"data\": {\r",
-							"      \"type\": \"object\",\r",
-							"      \"properties\": {\r",
-							"        \"userId\": {\r",
-							"          \"type\": \"integer\"\r",
-							"        },\r",
-							"        \"photoFilename\": {\r",
-							"          \"type\": \"string\"\r",
-							"        },\r",
-							"        \"distanceUnits\": {\r",
-							"          \"type\": \"string\"\r",
-							"        },\r",
-							"        \"currency\": {\r",
-							"          \"type\": \"string\"\r",
-							"        }\r",
-							"      },\r",
-							"      \"required\": [\r",
-							"        \"userId\",\r",
-							"        \"photoFilename\",\r",
-							"        \"distanceUnits\",\r",
-							"        \"currency\"\r",
-							"      ]\r",
-							"    }\r",
-							"  },\r",
-							"  \"required\": [\r",
-							"    \"status\",\r",
-							"    \"data\"\r",
-							"  ]\r",
-							"}\r",
-							"pm.collectionVariables.set(\"my_schema_JSON\", JSON.stringify(schema))\r",
-							"\r",
-							"var Ajv = require(\"ajv\"),\r",
-							"ajv = new Ajv({\r",
-							"    logger: console,\r",
-							"    allErrors: true,\r",
-							"    verbose: true\r",
-							"    })\r",
-							"pm.test(\"Schema is valid\", function () {\r",
-							"var data = pm.response.json();\r",
-							"pm.expect(ajv.validate(schema, data)).to.be.true;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"expect().to.be.true\", function () {   \r",
-							"    pm.expect(JSON.parse(pm.request.body.raw).email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"{{name}}\" ,\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"repeatPassword\": \"{{password}}\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURL}}/auth/signup",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"auth",
-						"signup"
-					]
-				},
-				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://qauto2.forstudy.space/api/auth/signup' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"name\": \"John\",\r\n  \"lastName\": \"Dou\",\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}'"
-			},
-			"response": []
-		},
 		{
 			"name": "signin",
 			"event": [
@@ -159,6 +15,14 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript",
@@ -190,7 +54,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"remember\": false\r\n}",
+					"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"remember\": true",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -198,9 +62,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/auth/signin",
+					"raw": "{{base_url}}/auth/signin",
 					"host": [
-						"{{baseURL}}"
+						"{{base_url}}"
 					],
 					"path": [
 						"auth",
@@ -212,45 +76,20 @@
 			"response": []
 		},
 		{
-			"name": "Edit profile",
+			"name": "Сars brands",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"const jsonData = pm.response.json();\r",
-							" pm.test(\"expect().to.equal()\", function () {   \r",
-							"    pm.expect(jsonData.status).to.equal(\"ok\");\r",
-							" });\r",
-							"const expectedResponse = {\r",
-							"    status: \"ok\",\r",
-							"    data: {\r",
-							"        userId: 121364,                 \r",
-							"        photoFilename: \"default-user.png\",\r",
-							"        name: \"Elian\",\r",
-							"        lastName: \"Schumm\",\r",
-							"        dateBirth: \"2021-03-17T15:21:05.000Z\",\r",
-							"        country: \"Ukraine\"\r",
-							"    }\r",
-							"};\r",
-							"\r",
-							"pm.test(\"Profile updated correctly\", function () {\r",
-							"    pm.expect(jsonData).to.eql(expectedResponse);\r",
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"dateBirth looks like ISO date\", function () {\r",
-							"    pm.expect(jsonData.data.dateBirth).to.match(/^\\d{4}-\\d{2}-\\d{2}T/);\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
 							"});\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
+							"\r",
 							""
 						],
 						"type": "text/javascript",
@@ -259,62 +98,43 @@
 				}
 			],
 			"request": {
-				"method": "PUT",
+				"method": "GET",
 				"header": [
 					{
 						"key": "accept",
 						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"photo\": \"user-1621352948859.jpg\",\r\n  \"name\": \"{{name}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"dateBirth\": \"{{dateBirth}}\",\r\n  \"country\": \"Ukraine\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "{{baseURL}}/users/profile",
+					"raw": "{{base_url}}/cars/brands",
 					"host": [
-						"{{baseURL}}"
+						"{{base_url}}"
 					],
 					"path": [
-						"users",
-						"profile"
+						"cars",
+						"brands"
 					]
 				},
-				"description": "Generated from cURL: curl -X 'PUT' \\\r\n  'https://qauto2.forstudy.space/api/users/profile' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"photo\": \"user-1621352948859.jpg\",\r\n  \"name\": \"John\",\r\n  \"lastName\": \"Dou\",\r\n  \"dateBirth\": \"2021-03-17T15:21:05.000Z\",\r\n  \"country\": \"Ukraine\"\r\n}'"
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://qauto2.forstudy.space/api/cars/brands' \\\r\n  -H 'accept: application/json'"
 			},
 			"response": []
 		},
 		{
-			"name": "Create car",
+			"name": "Create new car",
 			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"let milage = pm.variables.replaceIn(\"{{$randomInt}}\") \r",
-							"pm.collectionVariables.set('milage', milage);"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = pm.response.json();\r",
-							"pm.collectionVariables.set(\"car_id\", jsonData.data.id);\r",
-							"pm.collectionVariables.set(\"carMileage\", jsonData.data.mileage);\r",
-							"console.log(\"Created car id:\", jsonData.data.id);"
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -335,7 +155,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": {{milage}}\r\n}",
+					"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 122\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -343,15 +163,115 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/cars",
+					"raw": "{{base_url}}/cars",
 					"host": [
-						"{{baseURL}}"
+						"{{base_url}}"
 					],
 					"path": [
 						"cars"
 					]
 				},
 				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://qauto2.forstudy.space/api/cars' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 122\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Gets carsmodels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/cars/models",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cars",
+						"models"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://qauto2.forstudy.space/api/cars/models' \\\r\n  -H 'accept: application/json'"
+			},
+			"response": []
+		},
+		{
+			"name": "Add expenses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carId\": 1,\r\n  \"reportedAt\": \"2021-05-17\",\r\n  \"mileage\": 111,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/expenses",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"expenses"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://qauto2.forstudy.space/api/expenses' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"carId\": 1,\r\n  \"reportedAt\": \"2021-05-17\",\r\n  \"mileage\": 111,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}'"
 			},
 			"response": []
 		}
