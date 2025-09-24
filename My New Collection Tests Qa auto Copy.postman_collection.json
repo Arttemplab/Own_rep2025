@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "f397e9b3-7060-4254-9b61-8332a55e165f",
+		"name": "My New Collection Tests Qa auto Copy",
+		"description": "Api docs for hillel-qauto project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47382279",
+		"_collection_link": "https://artempkh-8422498.postman.co/workspace/Artem-Team's-Workspace~d08cfc33-e4af-4ce7-86fa-5f34d418b831/collection/47382279-f397e9b3-7060-4254-9b61-8332a55e165f?action=share&source=collection_link&creator=47382279"
+	},
+	"item": [
+		{
+			"name": "signin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"remember\": true",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/signin",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://qauto2.forstudy.space/api/auth/signin' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"remember\": false\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Сars brands",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/cars/brands",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cars",
+						"brands"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://qauto2.forstudy.space/api/cars/brands' \\\r\n  -H 'accept: application/json'"
+			},
+			"response": []
+		},
+		{
+			"name": "Create new car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 122\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cars",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://qauto2.forstudy.space/api/cars' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"carBrandId\": 1,\r\n  \"carModelId\": 1,\r\n  \"mileage\": 122\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Gets carsmodels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/cars/models",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cars",
+						"models"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://qauto2.forstudy.space/api/cars/models' \\\r\n  -H 'accept: application/json'"
+			},
+			"response": []
+		},
+		{
+			"name": "Add expenses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response\", function () {\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"answer JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carId\": 1,\r\n  \"reportedAt\": \"2021-05-17\",\r\n  \"mileage\": 111,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/expenses",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"expenses"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://qauto2.forstudy.space/api/expenses' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"carId\": 1,\r\n  \"reportedAt\": \"2021-05-17\",\r\n  \"mileage\": 111,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}'"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "random_mail",
+			"value": "Ignatius47@hotmail.com"
+		},
+		{
+			"key": "password",
+			"value": "Qwerty12345"
+		},
+		{
+			"key": "password_new",
+			"value": "Qwerty1234567"
+		},
+		{
+			"key": "myURL",
+			"value": "https://qauto2.forstudy.space/api"
+		},
+		{
+			"key": "milage",
+			"value": "175"
+		},
+		{
+			"key": "car_id",
+			"value": 189844
+		},
+		{
+			"key": "carMileage",
+			"value": ""
+		},
+		{
+			"key": "newMilage",
+			"value": ""
+		},
+		{
+			"key": "expense_id",
+			"value": ""
+		},
+		{
+			"key": "my_schema_JSON",
+			"value": ""
+		},
+		{
+			"key": "generatedName",
+			"value": ""
+		},
+		{
+			"key": "generatedLastName",
+			"value": ""
+		},
+		{
+			"key": "dateBirth",
+			"value": ""
+		},
+		{
+			"key": "country",
+			"value": ""
+		}
+	]
+}
